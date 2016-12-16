@@ -1,0 +1,38 @@
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+   <%= f.label :email %><br/>
+  <div class="input-group">
+
+          <%= f.email_field :email, placeholder: "Email", class: "form-control input-lg", label: false, :required =>true %>
+        </div><br/>
+<div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br/>
+      <div class="input-group">
+
+          <%= f.password_field :password, placeholder: "Password", class: "form-control input-lg", label: false, :required =>true %>
+        </div><br/>
+  </div>
+
+  <%= f.label :password_confirmation %><br/>
+   <div class="input-group">
+
+          <%= f.password_field :password_confirmation, placeholder: "Password-Confirmation", class: "form-control input-lg", label: false, :required =>true %>
+        </div><br/>
+
+
+  <%= f.submit "Sign Up",class: "btn btn-warning"%>
+    <% end %>
+
+<%= render "devise/shared/links" %>
+</div></div></div>

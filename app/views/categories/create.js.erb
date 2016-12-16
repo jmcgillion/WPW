@@ -1,0 +1,6 @@
+<% if @category.errors.present? %>
+$("#new_category").html('<%= escape_javascript render :partial => 'child_category' %>');
+<% else %>
+$("#new_category").hide();
+$("#categories").html('<%= escape_javascript render :partial => '/categories/index' %>');
+<% end %>

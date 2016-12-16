@@ -1,0 +1,5 @@
+<% if @childnote.errors.present? %>
+  $("#new_note").html('<%= escape_javascript render :partial => 'child_note' %>');
+<% else %>
+  location.reload();
+<% end %>

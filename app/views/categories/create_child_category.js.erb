@@ -1,0 +1,5 @@
+<% if @childcategory.errors.present? %>
+  $("#new_category").html('<%= escape_javascript render :partial => 'child_category' %>');
+<% else %>
+  location.reload();
+<% end %>

@@ -1,0 +1,16 @@
+  <%= render :partial => "/layouts/left_panel" %>
+<div class="col-lg-9">
+<%= link_to "+New category", child_category_category_path(@category), :remote => true, :class => "btn btn-warning btn-xs" %>
+
+
+<%= link_to "+Create Note", child_note_note_path(@category), :remote => true,:class => "btn btn-warning btn-xs pull-center" %>
+
+
+
+<hr >
+<div id="new_note"></div>
+<div id="new_category"></div>
+<div id="categories">
+  <%= render :partial => "/notes/index" %>
+</div>
+</div>

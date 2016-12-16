@@ -1,0 +1,16 @@
+
+
+
+<h5><%= link_to category.name,category,class: "btn  #{category.name == 'Work' ? 'btn-success' : category.name == 'Play' ? 'btn-danger' : 'btn-primary'}" %></h5>
+
+
+
+<style>
+  .nested_categories {
+    margin-left: 30px;
+  }
+
+  .nested_categories .nested_categories .nested_categories .nested_categories {
+    margin-left: 0;
+  }
+</style>

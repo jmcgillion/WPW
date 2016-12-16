@@ -1,0 +1,7 @@
+<%= form_for @childnote, :url => create_child_note_note_path(@note), :method => "POST", :html => {:multipart => true}, :remote => true, authenticity_token: true do |f| %>
+  <%= render :partial => "/layouts/error_messages", :locals => {:resource => @note} %>  
+  <%= f.hidden_field :category_id, :value => @note.category_id %>
+  <%= f.hidden_field :parent_id, :value => @note.id %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+<hr >

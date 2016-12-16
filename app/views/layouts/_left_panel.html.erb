@@ -1,0 +1,76 @@
+<% if current_user %>
+<div class="col-lg-3">
+  <div class="well sidebar-nav">
+    <ul class="nav nav-list">
+      <li><%= link_to "Notes", notes_path, class: "btn btn-warning" %></li>
+    </ul>
+  </div><!--/.well -->
+  <div class="row">
+  <h3><center><strong>Favourites Panel</strong></center></h3>
+    <div id="tree"></div>
+  </div>
+</div><!--/span-->
+<% end %>
+
+<style>
+   div.text-right{
+     float: right;
+}
+.box {
+    width: 150px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+}
+  </style>
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    update_note(data, ev.target.innerText);
+}
+
+function drop_delete(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    delete_note(data, ev.target.id);
+}
+
+function update_note(id, category) {
+    $.ajax({
+        url: '/notes/' + id,
+        type: 'PUT',
+        data: {note:{id: id, category: category}},
+        success: function(result) {
+            console.log(result);
+
+        }
+    });
+}
+
+function delete_note(id) {
+    $.ajax({
+        url: '/notes/' + id,
+        type: 'DELETE',
+        data: {note:{id: id}},
+        success: function(result) {
+            console.log(result);
+        }
+    });
+}
+
+
+$(document).ready(function(){
+  $('#tree').treeview({data: <%= Category.nested_categories(@categories).to_json.html_safe %>,ondrop:"drop(event)",ondragover:"allowDrop(event)"});
+  $('.list-group-item.node-tree').attr('ondrop', 'drop(event)');
+  $('.list-group-item.node-tree').attr('ondragover', 'allowDrop(event)');
+})
+</script>

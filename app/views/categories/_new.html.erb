@@ -1,0 +1,10 @@
+<%= form_for @category, :url => categories_path, :method => "POST", :html => {:multipart => true}, :remote => true, authenticity_token: true do |f| %>
+  <%= render :partial => "/layouts/error_messages", :locals => {:resource => @category} %>  
+  <div class="form-group">
+    <label for="name">Category</label>
+    
+  </div>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+<hr >
+<div id="new_category"></div>

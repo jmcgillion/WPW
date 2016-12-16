@@ -1,0 +1,7 @@
+<%= form_for @childcategory, :url => create_child_category_category_path(@category), :method => "POST", :html => {:multipart => true}, :remote => true, authenticity_token: true do |f| %>
+  <%= render :partial => "/layouts/error_messages", :locals => {:resource => @category} %>  
+  <%= f.hidden_field :note_id, :value => @category.note_id %>
+  <%= f.hidden_field :parent_id, :value => @category.id %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+<hr >

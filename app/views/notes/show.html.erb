@@ -1,0 +1,19 @@
+<%= render partial: 'layouts/left_panel' %>
+<div class="col-lg-9">
+<h2>Child Notes
+</h2>
+
+<hr >
+<div id="new_note"></div>
+<div id="notes">
+  <%= nested_notes @note.subtree.arrange(:order => :created_at) %>
+</div>
+</h2>
+
+<hr >
+<div id="new_note"></div>
+<div id="new_category"></div>
+<div id="categories">
+  <%= render :partial => "/notes/index" %>
+</div>
+</div>

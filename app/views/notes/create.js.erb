@@ -1,0 +1,6 @@
+<% if @note.errors.present? %>
+$("#new_note").html('<%= escape_javascript render :partial => 'new' %>');
+<% else %>
+$("#new_note").hide();
+$("#notes").html('<%= escape_javascript render :partial => '/notes/index' %>');
+<% end %>

@@ -1,0 +1,18 @@
+<div style="border: 1px solid gray; padding: 12px; border-radius: 5px;">
+  <p><%= link_to note.name, note %></p>
+
+  <p><%= note.body %></p>
+  <p><%= note.image.present? ? image_tag(note.image.url(:original), :width => 200) : '' %></p>
+  <p><%= link_to "New Note", child_note_note_path(note), :remote => true, :class => "btn btn-warning btn-xs" %></p>
+</div>
+<br />
+
+<style>
+  .nested_notes {
+    margin-left: 30px;
+  }
+
+  .nested_notes .nested_notes .nested_notes .nested_notes {
+    margin-left: 0;
+  }
+</style>

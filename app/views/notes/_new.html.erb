@@ -1,0 +1,9 @@
+<%= form_for @note, :url => notes_path, :method => "POST", :html => {:multipart => true}, :remote => true, authenticity_token: true do |f| %>
+  <%= render :partial => "/layouts/error_messages", :locals => {:resource => @note} %>  
+  <div class="form-group">
+    <label for="name">Category</label>
+    <%= f.select :category_id, options_for_select([["Select",""]]+Category.all.map{|a| [a.name, a.id]}, :selected => f.object.category_id), {}, :class => "form-control" %>
+  </div>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+<hr >
